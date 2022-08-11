@@ -26,11 +26,12 @@ class ViewModelHome(application: Application):AndroidViewModel(application) {
     }
 
     fun getInfo(){
+        CoroutineItems.main {
         val response = RepositoryInfo().getInfo()
         if (response.isSuccessful){
             listenerInfo?.onSuccess(response.body()?.data!!)
         }else{
             listenerInfo?.onError("Falló la respuesta")
-        }
+        }}
     }
 }
