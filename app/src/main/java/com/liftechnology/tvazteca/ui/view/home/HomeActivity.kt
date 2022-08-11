@@ -14,6 +14,7 @@ import com.liftechnology.tvazteca.data.model.responseTvAzteca.Item
 import com.liftechnology.tvazteca.databinding.ActivityHomeBinding
 import com.liftechnology.tvazteca.model.ListenerHome
 import com.liftechnology.tvazteca.ui.adapters.ItemsAdapter
+import com.liftechnology.tvazteca.ui.utils.Constants
 import com.liftechnology.tvazteca.ui.view.info.InfoActivity
 import com.liftechnology.tvazteca.ui.viewmodel.ViewModelHome
 
@@ -51,7 +52,9 @@ class HomeActivity : AppCompatActivity(), ListenerHome {
             showAlert()
         }else{
             //viewModel.getInfo()
-            val intent = Intent(this, InfoActivity::class.java)
+            val intent = Intent(this, InfoActivity::class.java).apply {
+                putExtra(Constants.KEY_INFO,item.programa)
+            }
             startActivity(intent)
         }
     }

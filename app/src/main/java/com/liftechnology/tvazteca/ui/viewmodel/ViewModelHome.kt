@@ -1,6 +1,7 @@
 package com.liftechnology.tvazteca.ui.viewmodel
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import com.liftechnology.tvazteca.data.model.responseContent.Data
 import com.liftechnology.tvazteca.data.respository.RepositoryInfo
@@ -25,13 +26,18 @@ class ViewModelHome(application: Application):AndroidViewModel(application) {
         }
     }
 
-    fun getInfo(){
+    fun getInfo(url:String){
+        val endPoint = url.split("appLite/")
         CoroutineItems.main {
-        val response = RepositoryInfo().getInfo()
+        val response = RepositoryInfo().getInfo(endPoint[1])
         if (response.isSuccessful){
             listenerInfo?.onSuccess(response.body()?.data!!)
         }else{
             listenerInfo?.onError("Falló la respuesta")
         }}
+    }
+
+    fun onClick(view: View){
+        listenerInfo?.onChanged()
     }
 }

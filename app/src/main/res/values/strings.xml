@@ -6,6 +6,7 @@
     <string name="image_description">TV Azteca Image</string>
     <string name="text_url">URL</string>
     <string name="text_title">Titulo</string>
+    <string name="text_btn_title">Página principal</string>
 
     <!-- messages -->
     <string name="txt_title_error_dialog">Algo salió mal</string>

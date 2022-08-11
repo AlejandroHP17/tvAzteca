@@ -1,5 +1,6 @@
 package com.liftechnology.tvazteca.ui.view.info
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,8 @@ import com.liftechnology.tvazteca.R
 import com.liftechnology.tvazteca.data.model.responseContent.Data
 import com.liftechnology.tvazteca.databinding.ActivityInfoBinding
 import com.liftechnology.tvazteca.model.ListenerInfo
+import com.liftechnology.tvazteca.ui.utils.Constants
+import com.liftechnology.tvazteca.ui.view.home.HomeActivity
 import com.liftechnology.tvazteca.ui.viewmodel.ViewModelHome
 
 class InfoActivity : AppCompatActivity(), ListenerInfo {
@@ -26,7 +29,12 @@ class InfoActivity : AppCompatActivity(), ListenerInfo {
         binding.vmInfo = viewModel
         viewModel.listenerInfo = this
 
-        viewModel.getInfo()
+        binding.apply {
+            btnReturn.text = getString(R.string.text_btn_title)
+        }
+
+        val url = intent.extras?.getString(Constants.KEY_INFO)
+        viewModel.getInfo(url!!)
     }
 
     override fun onSuccess(info: List<Data>) {
@@ -38,5 +46,10 @@ class InfoActivity : AppCompatActivity(), ListenerInfo {
 
     override fun onError(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onChanged() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 }
