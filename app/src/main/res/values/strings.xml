@@ -1,3 +1,13 @@
 <resources>
+    <!-- Title -->
     <string name="app_name">tvAzteca</string>
+
+    <!-- layouts -->
+    <string name="image_description">TV Azteca Image</string>
+    <string name="text_url">URL</string>
+    <string name="text_title">Titulo</string>
+
+    <!-- messages -->
+    <string name="txt_title_error_dialog">Algo salió mal</string>
+    <string name="txt_error_dialog">El contenido señalado no está disponible. Intente más tarde.</string>
 </resources>
